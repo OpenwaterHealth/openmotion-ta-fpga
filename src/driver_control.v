@@ -7,8 +7,8 @@ module driver_control(
     input         test_mode,
     input         pwm_cw_mode_select,
     input         trigger,
-    input         TA_EE_shutdown,
-    input         TA_OPT_shutdown,
+    input         shutdown,
+    input         laser_fired_count_reset,
 
     input [23:0] pulse_width,
     input [23:0] period,
@@ -27,8 +27,8 @@ module driver_control(
     output reg   trigger_ext,
     output reg   all_trigger,
     output reg   force_trigger,
-    output reg   laser_on
-
+    output reg   laser_on,
+    output reg [31:0] laser_fired_count
 	);
 	
 localparam IDLE            = 0;
@@ -82,7 +82,6 @@ reg [7:0] ready_count;
 reg drive_current_ready;
 
 wire pulse_clk;
-wire shutdown;
 
 //assign ss = ss_temp;
 //assign sck = !sck_temp;
@@ -91,7 +90,6 @@ wire shutdown;
 assign ldac_n = 0;
 
 assign spi_ready = data_ready;
-assign shutdown = TA_EE_shutdown | TA_OPT_shutdown;
 
 //assign pulse_clk = clk_count[3];
 assign pulse_clk = clk_count[2];
@@ -165,11 +163,12 @@ always @(posedge clk or negedge rstn) begin
                end
 end
 
-always @(negedge pulse_clk or negedge rstn) begin
-      if (!rstn) begin
+always @(negedge pulse_clk or negedge rstn or posedge laser_fired_count_reset) begin
+      if (!rstn | laser_fired_count_reset) begin
            pulse_count <= 0;
            period_active <= 0;
            pulse_active <= 0;
+		   laser_fired_count <= 0;
            ldac_temp <= 1;
            pulse_state <= IDLE;
       end else begin
@@ -179,6 +178,8 @@ always @(negedge pulse_clk or negedge rstn) begin
                                        ldac_temp <= 0;
                                        pulse_active <= 1;
                                        period_active <= 1;
+									   laser_fired_count <=  laser_fired_count + 1;
+
                                        pulse_state <= PULSE_COUNT_ST;
                                    end else ldac_temp <= 1;
                                end
