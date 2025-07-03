@@ -96,6 +96,7 @@ wire [15:0] adc_current_limit;
 wire [15:0] static_control;
 wire [15:0] dynamic_control;
 wire        over_current_limit;
+wire [31:0] laser_fired_count;
 
 wire drive_current_update;
 wire [15:0] pwm_mon_current_limit;
@@ -113,6 +114,7 @@ wire period_active;
 wire trigger_ext,all_trigger;
 wire data_valid;
 wire laser_on;
+wire shutdown;
 ///////////////// reg 20 //////////////////////
 assign pwm_cw_mode_select   = static_control[0];
 assign cw_active_n          = !static_control[1];
@@ -121,7 +123,8 @@ assign laser_disable        = static_control[3];
 assign test_mode            = static_control[7];
  
 ///////////////// reg 22 //////////////////////
-assign mon_limit_update     = dynamic_control[0];
+assign mon_limit_update     = dynamic_control[1];
+assign laser_fired_count_reset = dynamic_control[0];
 
 assign over_current_shutdown_n  = !(over_current_limit);
 assign TA_laser_disable = !(over_current_limit);
@@ -154,6 +157,7 @@ assign mcu_gpio              = 0;
 
 assign buf_clk = clk_25mhz;
 //assign buf_rstn = rstn  & system_reset_n;
+assign shutdown = TA_EE_shutdown | TA_OPT_shutdown;
 
 reset_generator reset_generator( 
     .rstn      		(rstn),
@@ -175,6 +179,13 @@ i2c_slave_top i2c_slave_top (
 	.scl 					(scl),
 	.sda 					(sda),
 	
+	.laser_fired_count      (laser_fired_count),
+	.temperature            (0),
+	.revision     			(8'h3),
+	.minor      			(8'h0),
+	.major      			(8'h0),
+	.ID      				(8'h2),
+
     .adc_voltage_data 		(adc_voltage_data),
     .monitor_status 		(monitor_status),
     .status 				(status),
@@ -200,8 +211,9 @@ driver_control driver_control(
     .pwm_cw_mode_select 			(pwm_cw_mode_select),
 
     .trigger            			(trigger),
-    .TA_EE_shutdown            	    (TA_EE_shutdown),
-    .TA_OPT_shutdown            	(TA_OPT_shutdown),
+    .shutdown                      (shutdown),
+    .laser_fired_count_reset	    (laser_fired_count_reset),
+
     .pulse_width        			(pulse_width),
     .period             			(period),
 	
@@ -219,7 +231,8 @@ driver_control driver_control(
     .all_trigger      			    (all_trigger),
     .trigger_ext      			    (trigger_ext),
     .force_trigger      		    (force_trigger),
-    .laser_on      		            (laser_on)
+    .laser_on      		            (laser_on),
+	.laser_fired_count      	    (laser_fired_count)
 
 	);
 	

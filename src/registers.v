@@ -12,6 +12,13 @@ module registers(
 	input [7:0]   		i2c_to_data,
     output              stretch_on,
 	
+	input [31:0]  		laser_fired_count,
+    input [15:0]   	temperature,
+    input [7:0]     	revision,
+    input [7:0]     	minor,
+    input [7:0]     	major,
+    input [7:0]     	ID,
+
     input [15:0]  		adc_voltage_data,
     input [7:0]   		monitor_status,
     input [7:0]   		status,
@@ -72,7 +79,7 @@ always @ (posedge clk or posedge rst) begin
 	if (rst) begin
 	    count <= 0;
 	    update_count <= 0;
-		pulse_width <= 24'h00139;
+		pulse_width <= 24'h0030d;
 		period <= 24'h006e00;
 		drive_current <= 16'h3600;  // 14-bit
 		drive_current_limit <= 16'h3f00;
@@ -149,6 +156,17 @@ always @ (posedge clk or posedge rst) begin
 					  8'hB : data_out <= pwm_mon_current_limit[15:8];
 					  8'hC : data_out <= cw_mon_current_limit[7:0];
 					  8'hD : data_out <= cw_mon_current_limit[15:8];
+					  8'hE : data_out <= temperature[7:0];
+					  8'hF : data_out <= temperature[15:8];
+					 8'h10 : data_out <= laser_fired_count[7:0];
+					 8'h11 : data_out <= laser_fired_count[15:8];
+					 8'h12 : data_out <= laser_fired_count[23:16];
+					 8'h13 : data_out <= laser_fired_count[31:24];
+					 8'h14 : data_out <= revision;
+					 8'h15 : data_out <= minor;
+					 8'h16 : data_out <= major;
+					 8'h17 : data_out <= ID;
+
 				     8'h10 : data_out <= adc_voltage_data[7:0];
 					 8'h11 : data_out <= adc_voltage_data[15:8];
 					 8'h20 : data_out <= static_control[7:0];

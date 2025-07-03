@@ -24,6 +24,13 @@ module i2c_slave_top(
     inout     	   scl,             		 
     inout     	   sda,             		 
 			
+	input [31:0]  laser_fired_count,
+    input [15:0]  temperature,
+    input [7:0]   revision,
+    input [7:0]   minor,
+    input [7:0]   major,
+    input [7:0]   ID,
+	
     input [15:0]  adc_voltage_data,
     input [7:0]   monitor_status,
     input [7:0]   status,
@@ -75,6 +82,13 @@ registers registers(
 	.r_w 					(r_w),
 	.i2c_to_data			(data_out),
 	.stretch_on             (stretch_on),
+
+	.laser_fired_count 		(laser_fired_count),
+	.temperature 			(temperature),
+	.revision 				(revision),
+	.minor 					(minor),
+	.major 					(major),
+	.ID 					(ID),
 
 	.adc_voltage_data 		(adc_voltage_data),
 	.monitor_status 		(monitor_status),
