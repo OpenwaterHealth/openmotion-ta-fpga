@@ -10,6 +10,19 @@
 // Description: 
 //
 // <Description here>
+//TA Drive: 0 mA
+//TA Pulse: 250 탎
+
+//Seed DDS: 0 mA (Limit 80mA)
+//Seed CW: 140 mA (Limit 140mA)
+
+//Pulse width limit, upper: 0탎
+//Pulse width limit, upper: 225탎
+//Period limit: 22500탎
+//Drive current: 5500mA
+//CW Current: 160mA
+//PWM Current: 80mA
+
 //
 // Targeted device: <Family::ProASIC3> <Die::A3PN010> <Package::48 QFN>
 // Author: <Name>
@@ -35,7 +48,8 @@ module top(
 	output    ldac_n,               // Pin 66
 	
 	output    laser_disable_led_n,   // Pin 12
-	output    TA_laser_disable,      // Pin 87-low active
+	//output    TA_laser_disable,      // Pin 87-low active
+	output    pulse,                  // Pin 87
 
 	input     adc_sdo,        	       // Pin 84
 	output    adc_sck,         	   // Pin 81
@@ -44,9 +58,6 @@ module top(
     inout     scl,             	   // Pin 57
     inout     sda,             	   // Pin 58
 	
-    inout     temp_scl,               // Pin 60
-    inout     temp_sda,               // Pin 61
-
 	input     cw_compared,            // Pin 70
 	input     pwm_compared,           // Pin 63
 	output    cw_over_current_led_n,  // Pin 64
@@ -98,7 +109,6 @@ wire [15:0] dynamic_control;
 wire        over_current_limit;
 wire [31:0] laser_fired_count;
 
-wire drive_current_update;
 wire [15:0] pwm_mon_current_limit;
 wire [15:0] cw_mon_current_limit;
 
@@ -115,6 +125,9 @@ wire trigger_ext,all_trigger;
 wire data_valid;
 wire laser_on;
 wire shutdown;
+wire [15:0] adc_peak_data;
+wire lock;
+
 ///////////////// reg 20 //////////////////////
 assign pwm_cw_mode_select   = static_control[0];
 assign cw_active_n          = !static_control[1];
@@ -131,8 +144,9 @@ assign TA_laser_disable = !(over_current_limit);
 
 //assign TA_spare2              = pulse_active;
 //assign TA_spare1              = period_active;
-assign TA_spare1              = sck;
-//assign TA_spare2              = mosi;
+//assign TA_spare1              = sck;
+assign TA_spare1              = pulse;
+//assign TA_spare2              = shutdown;
 assign TA_spare2              = TA_EE_shutdown;
 //assign TA_spare3              = ss;
 assign TA_spare3              = trigger;
@@ -149,13 +163,9 @@ assign OPT_gpio4              = 0;
 
 assign laser_disable_led_n = !laser_on;
 
-//assign status = {system_reset_n,TA_pos_pwr_good,TA_neg_pwr_good,TA_EE_shutdown,TA_OPT_shutdown,cw_compared,pwm_compared,over_current_limit,laser_on};
 assign status = {5'h0,TA_EE_shutdown,TA_OPT_shutdown,laser_on};
-assign temp_scl              = 0;
-assign temp_sda              = 0;
 assign mcu_gpio              = 0;
 
-assign buf_clk = clk_25mhz;
 //assign buf_rstn = rstn  & system_reset_n;
 assign shutdown = TA_EE_shutdown | TA_OPT_shutdown;
 
@@ -164,6 +174,13 @@ reset_generator reset_generator(
     .system_reset_n (system_reset_n),
     .clk       		(buf_clk),
     .reset_n   		(reset_n)
+);
+
+PLL PLL( 
+    .RST    (!rstn),
+    .CLKI   (clk_25mhz),
+    .CLKOP  (buf_clk),
+    .LOCK   (lock)
 );
 
 heart_beat heart_beat( 
@@ -180,14 +197,13 @@ i2c_slave_top i2c_slave_top (
 	.sda 					(sda),
 	
 	.laser_fired_count      (laser_fired_count),
-	.temperature            (0),
 	.revision     			(8'h3),
 	.minor      			(8'h0),
 	.major      			(8'h0),
 	.ID      				(8'h2),
 
     .adc_voltage_data 		(adc_voltage_data),
-    .monitor_status 		(monitor_status),
+    .adc_peak_data 		    (adc_peak_data),
     .status 				(status),
 	
     .pulse_width 			(pulse_width),
@@ -202,7 +218,8 @@ i2c_slave_top i2c_slave_top (
     .static_control 	   (static_control)
 
 );
-             
+         
+		 
 driver_control driver_control(
     .rstn               			(reset_n),
     .clk                			(buf_clk),
@@ -226,6 +243,7 @@ driver_control driver_control(
     .sck                			(sck),
     .ldac_n             			(ldac_n),
 	
+    .pulse		       			    (pulse),
     .pulse_active       			(pulse_active),
     .period_active      			(period_active),
     .all_trigger      			    (all_trigger),
@@ -254,7 +272,7 @@ adc_control adc_control(
     .adc_sck                (adc_sck),
     .adc_convert            (adc_convert),
 
-    .monitor_status         (monitor_status)
+    .adc_peak_data          (adc_peak_data)
 
 );
 

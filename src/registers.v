@@ -13,14 +13,13 @@ module registers(
     output              stretch_on,
 	
 	input [31:0]  		laser_fired_count,
-    input [15:0]   	temperature,
     input [7:0]     	revision,
     input [7:0]     	minor,
     input [7:0]     	major,
     input [7:0]     	ID,
 
     input [15:0]  		adc_voltage_data,
-    input [7:0]   		monitor_status,
+    input [15:0]   	adc_peak_data,
     input [7:0]   		status,
 
     output reg [23:0] pulse_width,
@@ -81,8 +80,9 @@ always @ (posedge clk or posedge rst) begin
 	    update_count <= 0;
 		pulse_width <= 24'h0030d;
 		period <= 24'h006e00;
-		drive_current <= 16'h3600;  // 14-bit
-		drive_current_limit <= 16'h3f00;
+		drive_current <= 16'h0000;   // 14-bit
+		//drive_current <= 16'h3600;  // 14-bit
+		drive_current_limit <= 16'h8647;   //Drive current: 5500mA
 		pwm_mon_current_limit <= 16'h00b0;
 		cw_mon_current_limit <= 16'h00a0;
 		drive_current_update <=0;
@@ -156,8 +156,6 @@ always @ (posedge clk or posedge rst) begin
 					  8'hB : data_out <= pwm_mon_current_limit[15:8];
 					  8'hC : data_out <= cw_mon_current_limit[7:0];
 					  8'hD : data_out <= cw_mon_current_limit[15:8];
-					  8'hE : data_out <= temperature[7:0];
-					  8'hF : data_out <= temperature[15:8];
 					 8'h10 : data_out <= laser_fired_count[7:0];
 					 8'h11 : data_out <= laser_fired_count[15:8];
 					 8'h12 : data_out <= laser_fired_count[23:16];
@@ -167,8 +165,10 @@ always @ (posedge clk or posedge rst) begin
 					 8'h16 : data_out <= major;
 					 8'h17 : data_out <= ID;
 
-				     8'h10 : data_out <= adc_voltage_data[7:0];
-					 8'h11 : data_out <= adc_voltage_data[15:8];
+				     8'h18 : data_out <= adc_voltage_data[7:0];
+					 8'h19 : data_out <= adc_voltage_data[15:8];
+				     8'h1A : data_out <= adc_peak_data[7:0];
+					 8'h1B : data_out <= adc_peak_data[15:8];
 					 8'h20 : data_out <= static_control[7:0];
 					 8'h21 : data_out <= static_control[15:8];
 					 8'h24 : data_out <= status;
