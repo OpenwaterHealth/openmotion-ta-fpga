@@ -20,8 +20,9 @@ module driver_control(
     output reg   mosi,
     output reg   ss,
     output reg   sck,
-    output       ldac_n,
+    output reg   ldac_n,
 	
+    output reg   pulse,
     output reg   pulse_active,
     output reg   period_active,
     output reg   trigger_ext,
@@ -43,7 +44,7 @@ localparam DONE            = 8;
 		
 localparam WRITE_INPUT_REGISTER = 4'h3;
 
-reg [3:0]  state=0,cstate=0,dac_state=0,pulse_state=0;
+reg [3:0]  state=0,cstate=0,dac_state=0,pulse_state=0,out_state=0;
 reg [7:0]  count;
 reg [23:0] data_temp;
 reg [23:0] data;
@@ -69,29 +70,22 @@ reg [15:0] clk_count;
 reg [23:0] pulse_count;
 reg [23:0] period_d,period_d2;
 reg        load_dac,reload_dac;
-reg        trigger_ext_rst,all_trigger,all_trigger_d;
-//reg        trigger_ext,trigger_ext_rst,all_trigger,all_trigger_d;
+reg        trigger_ext_rst,all_trigger_d;
 reg [7:0]  trigger_count;
 reg [23:0] force_trigger_count,force_trigger_count_d,force_trigger_count_d2;
 reg index=0;
 reg load_dac_d,reload_dac_d;
 reg load_dac_register;
-reg force_trigger,force_trigger_d,force_trigger_ext;
+reg force_trigger_d,force_trigger_ext;
 reg mosi_d1;
 reg [7:0] ready_count;
 reg drive_current_ready;
+reg [7:0] wait_count;
 
 wire pulse_clk;
 
-//assign ss = ss_temp;
-//assign sck = !sck_temp;
-//assign mosi = mosi_temp;
-//assign ldac_n = ldac_temp;
-assign ldac_n = 0;
-
 assign spi_ready = data_ready;
 
-//assign pulse_clk = clk_count[3];
 assign pulse_clk = clk_count[2];
 
 always @(posedge clk or negedge rstn) begin
@@ -148,7 +142,6 @@ always @(posedge clk or negedge rstn) begin
            trigger_ext <= 0;
            trigger_count <= 0;
       end else begin
-                  // all_trigger <= ((trigger | force_trigger_ext));
                    all_trigger <= ((trigger | force_trigger_ext) & (!shutdown));
                    all_trigger_d <= all_trigger;
                    if (!all_trigger_d & all_trigger) trigger_ext <= 1;
@@ -167,6 +160,7 @@ always @(negedge pulse_clk or negedge rstn or posedge laser_fired_count_reset) b
       if (!rstn | laser_fired_count_reset) begin
            pulse_count <= 0;
            period_active <= 0;
+           pulse <= 0;
            pulse_active <= 0;
 		   laser_fired_count <= 0;
            ldac_temp <= 1;
@@ -176,6 +170,7 @@ always @(negedge pulse_clk or negedge rstn or posedge laser_fired_count_reset) b
                         IDLE : begin
                                    if (trigger_ext) begin
                                        ldac_temp <= 0;
+                                       pulse <= 1;
                                        pulse_active <= 1;
                                        period_active <= 1;
 									   laser_fired_count <=  laser_fired_count + 1;
@@ -184,6 +179,8 @@ always @(negedge pulse_clk or negedge rstn or posedge laser_fired_count_reset) b
                                    end else ldac_temp <= 1;
                                end
               PULSE_COUNT_ST : begin  //6
+                                   if (pulse_count > pulse_width-55) pulse <= 0;
+                                 //  if (pulse_count > pulse_width-20) pulse <= 0;
                                    if (pulse_count > pulse_width-2) begin
                                        ldac_temp <= 0;
                                        pulse_active <= 0;
@@ -216,9 +213,11 @@ always @(posedge clk or negedge rstn) begin
 		if (!rstn) begin
              ss <= 0;
              sck <= 0;
+             ldac_n <= 0;
         end else begin
 				   ss <= ss_temp;
                    sck <= !sck_temp;
+                   ldac_n <= ldac_temp;
                  end
 end
 
@@ -307,12 +306,14 @@ end
 always @(posedge clk or negedge rstn) begin
     if (!rstn) begin
              load_dac_register <= 0;
-             drive_current_reg <= 16'h3600;
-             drive_current_limit_reg <= 16'h3f00;
+             drive_current_reg <= 0;
+			 drive_current_limit_reg <= 16'h8647;   //Drive current: 5500mA
     end else begin
+                 drive_current_limit_reg <= drive_current_limit;
                  if (drive_current_update) begin
-                     drive_current_reg <= drive_current;
-                     drive_current_limit_reg <= drive_current_limit;
+                     if (drive_current < drive_current_limit_reg) drive_current_reg <= drive_current;
+					 else drive_current_reg <= drive_current_limit_reg;
+						 
 					 load_dac_register <= 1;
                  end else load_dac_register <= 0;
              end
@@ -328,26 +329,38 @@ always @(posedge clk or negedge rstn) begin
         load_dac_d <= 0;
         ldac_temp_d <= 1;
         reload_dac_d <= 0;
+        wait_count <= 0;
+		out_state <= IDLE;
     end else begin
 			       ldac_temp_d <= ldac_temp;
 				   if (data_valid_reset) data_valid <= 0;
-			    //   if ((load_dac_register) | (!ldac_temp_d & ldac_temp)) begin
-			       if (!ldac_temp_d & ldac_temp) begin
-					   case (index)
-							 0 : begin
-										data <= {4'h3,drive_current_reg,4'h0};
-										data_valid <= 1;
-										laser_on <= 1;
-										index <= 1;
+				   case (out_state)
+						 IDLE : if (!ldac_temp_d & ldac_temp) out_state <= WAIT;
+						 WAIT : begin
+						          if (wait_count > 8'hF0) begin
+									  wait_count <= 0;
+									  out_state <= READY;
+								  end else wait_count <= wait_count + 1;
+								end
+				   	    READY : begin
+							       out_state <= DONE;
+								   case (index)
+										 0 : begin
+													data <= {4'h3,drive_current_reg,4'h0};
+													data_valid <= 1;
+													laser_on <= 1;
+													index <= 1;
+											 end
+										 1 : begin
+													data <= {4'h3,16'h0,4'h0};
+													data_valid <= 1;
+													laser_on <= 0;
+													index <= 0;
+											 end
+								   endcase
 								 end
-							 1 : begin
-										data <= {4'h3,16'h0,4'h0};
-										data_valid <= 1;
-										laser_on <= 0;
-										index <= 0;
-								 end
-					   endcase
-				  end 
+						  DONE : out_state <= IDLE;
+				  endcase 
 					  
 		     end
 end
