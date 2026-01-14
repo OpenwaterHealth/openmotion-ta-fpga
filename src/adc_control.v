@@ -32,10 +32,10 @@ module adc_control(
 
     output reg         adc_data_valid,
     output [15:0]     adc_voltage_data,
+    output reg [15:0] adc_peak_data,
 
     output             adc_sck,
-    output reg         adc_convert,
-    output [7:0]      monitor_status
+    output reg         adc_convert
 
 )/* synthesis syn_preserve=1 */;
 
@@ -54,7 +54,7 @@ reg [7:0] convert_count;
 reg [7:0] count;
 reg [13:0] voltage_data;
 reg [13:0] current_data;
-reg [15:0] adc_voltage_data_temp,adc_voltage_data_value;
+reg [15:0] adc_voltage_data_temp,adc_voltage_data_value,adc_voltage_data_old;
 reg [3:0] sck_count;
 
 reg data_ready;
@@ -62,7 +62,6 @@ reg adc_sck_temp;
 reg adc_data_valid_temp;
 
 assign adc_sck = adc_sck_temp & data_ready;
-assign monitor_status = 0;
 
 assign adc_voltage_data = adc_voltage_data_temp;
 
@@ -146,14 +145,28 @@ always @(posedge clk,negedge rstn)
 begin
     if (!rstn) begin
         adc_voltage_data_value <= 0;     
+        adc_voltage_data_old <= 0;     
         adc_data_valid <= 0;     
     end else begin
                    if (adc_data_valid_temp) begin
                        adc_data_valid <= 1;
                        adc_voltage_data_value <= adc_voltage_data_temp;
+                       adc_voltage_data_old <= adc_voltage_data_temp;
                    end else adc_data_valid <= 0;
              end
 end
+
+always @(posedge clk,negedge rstn)
+begin
+    if (!rstn) begin
+        adc_peak_data <= 0;     
+    end else begin
+                   if (adc_data_valid_temp) begin
+                       if (adc_voltage_data_old < adc_voltage_data_temp) adc_peak_data <= adc_voltage_data_temp;
+                   end 
+             end
+end
+
 
 endmodule
 

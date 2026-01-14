@@ -1,121 +1,121 @@
 # Reading pref.tcl
-# do {C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/TestBench.mdo}
-# Loading project TestBench
+# do {D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/test/test.mdo}
+# Loading project test
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:16 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/adc_control.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/adc_control.v 
 # -- Compiling module adc_control
 # 
 # Top level modules:
 # 	adc_control
-# End time: 08:23:16 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:16 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/driver_control.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/driver_control.v 
 # -- Compiling module driver_control
 # 
 # Top level modules:
 # 	driver_control
-# End time: 08:23:16 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:16 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/registers.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/registers.v 
 # -- Compiling module registers
 # 
 # Top level modules:
 # 	registers
-# End time: 08:23:16 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:16 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller.v 
 # -- Compiling module i2cslave_controller
 # 
 # Top level modules:
 # 	i2cslave_controller
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:01
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/filter.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/filter.v 
 # -- Compiling module filter
 # 
 # Top level modules:
 # 	filter
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v 
 # -- Compiling module i2cslave_controller_top
 # 
 # Top level modules:
 # 	i2cslave_controller_top
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2c_slave_top.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2c_slave_top.v 
 # -- Compiling module i2c_slave_top
 # 
 # Top level modules:
 # 	i2c_slave_top
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/heart_beat.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/heart_beat.v 
 # -- Compiling module heart_beat
 # 
 # Top level modules:
 # 	heart_beat
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/reset_generator.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/reset_generator.v 
 # -- Compiling module reset_generator
 # 
 # Top level modules:
 # 	reset_generator
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v 
 # -- Compiling module top
 # 
 # Top level modules:
 # 	top
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/i2c_master.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/i2c_master.v 
 # -- Compiling module i2c_master
 # 
 # Top level modules:
 # 	i2c_master
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v 
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v 
 # -- Compiling module top_tb
 # 
 # Top level modules:
 # 	top_tb
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 08:23:17 on Apr 01,2025
-# vlog -reportprogress 300 "+incdir+C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench" -work work C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/tb_defines.v 
-# End time: 08:23:17 on Apr 01,2025, Elapsed time: 0:00:00
+# Start time: 10:09:14 on Aug 20,2025
+# vlog -reportprogress 300 "+incdir+D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench" -work work D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/tb_defines.v 
+# End time: 10:09:14 on Aug 20,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -L work -L pmi_work -L ovi_machxo2 top_tb 
-# Start time: 08:23:17 on Apr 01,2025
+# Start time: 10:09:14 on Aug 20,2025
 # //  ModelSim - Lattice FPGA Edition 2023.3 Jul 18 2023
 # //
 # //  Copyright 1991-2023 Mentor Graphics Corporation
@@ -141,40 +141,32 @@
 # Loading work.registers
 # Loading work.driver_control
 # Loading work.adc_control
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_pos_pwr_good'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(25).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_neg_pwr_good'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(26).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_EE_shutdown'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(29).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_OPT_shutdown'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(30).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'adc_sdo'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'cw_compared'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(50).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'pwm_compared'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v(51).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/top_tb.v Line: 107
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (1) for port 'monitor_status'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2c_slave_top.v(28).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top/i2c_slave_top File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v Line: 163
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_pos_pwr_good'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(38).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_neg_pwr_good'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(39).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_EE_shutdown'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(42).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'TA_OPT_shutdown'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(43).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'adc_sdo'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(53).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'cw_compared'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(63).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'pwm_compared'. The port definition is at: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/top.v(64).
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/top_tb.v Line: 107
 # ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'i2cslave_controller_u1'.  Expected 26, found 18.
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top/i2c_slave_top/i2cslave_controller_top/i2cslave_controller_u1 File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v Line: 124
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_intr'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_rx_status'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_data_request'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_init_done'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_rd_done'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_timeout_err'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_init_intr'.
-# ** Warning: (vsim-3722) C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_timeout_intr'.
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (1) for port 'monitor_status'. The port definition is at: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/adc_control.v(38).
-#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top/adc_control File: C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/src/top.v Line: 211
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/top/i2c_slave_top/i2cslave_controller_top/i2cslave_controller_u1 File: D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v Line: 124
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_intr'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_rx_status'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_data_request'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_init_done'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_rd_done'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_timeout_err'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_init_intr'.
+# ** Warning: (vsim-3722) D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/src/i2cslave_controller_top.v(124): [TFMPC] - Missing connection for port 'o_timeout_intr'.
 # .main_pane.wave.interior.cs.body.pw.wf
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: Henry Tang  Hostname: DESKTOP-HKS9BFC  ProcessID: 38096
-#           Attempting to use alternate WLF file "./wlftgz1sgf".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftgz1sgf
+add wave -position end sim:/top_tb/top/driver_control/*
 run -all
 #               203002: The I2C Master Has Generated a Start Condition.
 #  
@@ -304,7 +296,11 @@ run -all
 #              --------------------------------------------------------
 #  
 #  
-# ** Note: $stop    : C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/i2c_master.v(249)
+# ** Note: $stop    : D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/i2c_master.v(249)
 #    Time: 4689558 ns  Iteration: 0  Instance: /top_tb/master_uut
-# Break in Module i2c_master at C:/Project/Working/FPGA/HOME/Lattice/TA_Driver/Rev_2/TestBench/i2c_master.v line 249
+# Break in Module i2c_master at D:/FPGA/8152025/TA_Driver/TA_FPGA_0.1.7/TestBench/i2c_master.v line 249
 run -all
+# Break key hit
+# Simulation stop requested.
+# End time: 10:38:00 on Aug 20,2025, Elapsed time: 0:28:46
+# Errors: 0, Warnings: 33
