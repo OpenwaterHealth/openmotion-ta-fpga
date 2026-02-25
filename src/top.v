@@ -37,7 +37,10 @@ module top(
     input     clk_25mhz,            // Pin 1
 	//input     TA_pos_pwr_good,      // Pin 15
 	//input     TA_neg_pwr_good,      // Pin 14
-
+	
+	input 	  scl_cfg,
+	inout	  sda_cfg,
+	
     input     trigger,              // Pin 48
     input     TA_EE_shutdown,       // Pin 42
     input     TA_OPT_shutdown,      // Pin 43
@@ -182,6 +185,30 @@ PLL PLL(
     .CLKOP  (buf_clk),
     .LOCK   (lock)
 );
+	
+efb_i2c efb_inst (
+	// Wishbone clock (MANDATORY)
+	.wb_clk_i(clk_25mhz),
+	.wb_rst_i(1'b0),
+
+	// Wishbone interface (unused, but must exist)
+	.wb_stb_i(1'b0),
+	.wb_cyc_i(1'b0),
+	.wb_we_i(1'b0),
+	.wb_adr_i(8'b0),
+	.wb_dat_i(8'b0),
+
+	// Outputs (unused)
+	.wb_ack_o(),
+	.wb_dat_o(),
+	.i2c1_irqo(),
+
+	// I2C pins
+	.i2c1_scl(scl_cfg),
+	.i2c1_sda(sda_cfg)
+
+	// SPI / Timer / UART ports can be left unconnected
+);
 
 heart_beat heart_beat( 
     .rstn      (reset_n),
@@ -199,7 +226,7 @@ i2c_slave_top i2c_slave_top (
 	.laser_fired_count      (laser_fired_count),
 	.revision     			(8'h0),
 	.minor      			(8'h1),
-	.major      			(8'h0),
+	.major      			(8'h1),
 	.ID      				(8'h2),
 
     .adc_voltage_data 		(adc_voltage_data),

@@ -36,6 +36,9 @@
         <Source name="PLL.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
         </Source>
+        <Source name="efb_i2c.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
         <Source name="TA_Driver.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
